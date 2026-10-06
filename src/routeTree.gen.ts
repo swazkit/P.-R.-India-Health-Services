@@ -11,8 +11,22 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as HealthcareTeamRouteImport } from './routes/healthcare-team'
+import { Route as HomeIcuRouteImport } from './routes/home-icu'
+import { Route as JoinTeamRouteImport } from './routes/join-team'
+import { Route as MedicalDisclaimerRouteImport } from './routes/medical-disclaimer'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as RequestServiceRouteImport } from './routes/request-service'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminContactMessagesRouteImport } from './routes/admin/contact-messages'
+import { Route as AdminEquipmentRouteImport } from './routes/admin/equipment'
+import { Route as AdminHealthcareTeamRouteImport } from './routes/admin/healthcare-team'
+import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as AdminNotificationsRouteImport } from './routes/admin/notifications'
+import { Route as AdminServiceRequestsRouteImport } from './routes/admin/service-requests'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -24,9 +38,39 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HealthcareTeamRoute = HealthcareTeamRouteImport.update({
   id: '/healthcare-team',
   path: '/healthcare-team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeIcuRoute = HomeIcuRouteImport.update({
+  id: '/home-icu',
+  path: '/home-icu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JoinTeamRoute = JoinTeamRouteImport.update({
+  id: '/join-team',
+  path: '/join-team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MedicalDisclaimerRoute = MedicalDisclaimerRouteImport.update({
+  id: '/medical-disclaimer',
+  path: '/medical-disclaimer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RequestServiceRoute = RequestServiceRouteImport.update({
+  id: '/request-service',
+  path: '/request-service',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -34,39 +78,190 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminContactMessagesRoute = AdminContactMessagesRouteImport.update({
+  id: '/admin/contact-messages',
+  path: '/admin/contact-messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminEquipmentRoute = AdminEquipmentRouteImport.update({
+  id: '/admin/equipment',
+  path: '/admin/equipment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminHealthcareTeamRoute = AdminHealthcareTeamRouteImport.update({
+  id: '/admin/healthcare-team',
+  path: '/admin/healthcare-team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminNotificationsRoute = AdminNotificationsRouteImport.update({
+  id: '/admin/notifications',
+  path: '/admin/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminServiceRequestsRoute = AdminServiceRequestsRouteImport.update({
+  id: '/admin/service-requests',
+  path: '/admin/service-requests',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/healthcare-team': typeof HealthcareTeamRoute
+  '/home-icu': typeof HomeIcuRoute
+  '/join-team': typeof JoinTeamRoute
+  '/medical-disclaimer': typeof MedicalDisclaimerRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/request-service': typeof RequestServiceRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
+  '/admin/contact-messages': typeof AdminContactMessagesRoute
+  '/admin/equipment': typeof AdminEquipmentRoute
+  '/admin/healthcare-team': typeof AdminHealthcareTeamRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/service-requests': typeof AdminServiceRequestsRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/healthcare-team': typeof HealthcareTeamRoute
+  '/home-icu': typeof HomeIcuRoute
+  '/join-team': typeof JoinTeamRoute
+  '/medical-disclaimer': typeof MedicalDisclaimerRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/request-service': typeof RequestServiceRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
+  '/admin/contact-messages': typeof AdminContactMessagesRoute
+  '/admin/equipment': typeof AdminEquipmentRoute
+  '/admin/healthcare-team': typeof AdminHealthcareTeamRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/service-requests': typeof AdminServiceRequestsRoute
+  '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/healthcare-team': typeof HealthcareTeamRoute
+  '/home-icu': typeof HomeIcuRoute
+  '/join-team': typeof JoinTeamRoute
+  '/medical-disclaimer': typeof MedicalDisclaimerRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/request-service': typeof RequestServiceRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
+  '/admin/contact-messages': typeof AdminContactMessagesRoute
+  '/admin/equipment': typeof AdminEquipmentRoute
+  '/admin/healthcare-team': typeof AdminHealthcareTeamRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/service-requests': typeof AdminServiceRequestsRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/healthcare-team' | '/services'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/healthcare-team'
+    | '/home-icu'
+    | '/join-team'
+    | '/medical-disclaimer'
+    | '/privacy-policy'
+    | '/request-service'
+    | '/services'
+    | '/terms'
+    | '/admin/contact-messages'
+    | '/admin/equipment'
+    | '/admin/healthcare-team'
+    | '/admin/login'
+    | '/admin/notifications'
+    | '/admin/service-requests'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/healthcare-team' | '/services'
-  id: '__root__' | '/' | '/about' | '/healthcare-team' | '/services'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/healthcare-team'
+    | '/home-icu'
+    | '/join-team'
+    | '/medical-disclaimer'
+    | '/privacy-policy'
+    | '/request-service'
+    | '/services'
+    | '/terms'
+    | '/admin/contact-messages'
+    | '/admin/equipment'
+    | '/admin/healthcare-team'
+    | '/admin/login'
+    | '/admin/notifications'
+    | '/admin/service-requests'
+    | '/admin'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/healthcare-team'
+    | '/home-icu'
+    | '/join-team'
+    | '/medical-disclaimer'
+    | '/privacy-policy'
+    | '/request-service'
+    | '/services'
+    | '/terms'
+    | '/admin/contact-messages'
+    | '/admin/equipment'
+    | '/admin/healthcare-team'
+    | '/admin/login'
+    | '/admin/notifications'
+    | '/admin/service-requests'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
   HealthcareTeamRoute: typeof HealthcareTeamRoute
+  HomeIcuRoute: typeof HomeIcuRoute
+  JoinTeamRoute: typeof JoinTeamRoute
+  MedicalDisclaimerRoute: typeof MedicalDisclaimerRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  RequestServiceRoute: typeof RequestServiceRoute
   ServicesRoute: typeof ServicesRoute
+  TermsRoute: typeof TermsRoute
+  AdminContactMessagesRoute: typeof AdminContactMessagesRoute
+  AdminEquipmentRoute: typeof AdminEquipmentRoute
+  AdminHealthcareTeamRoute: typeof AdminHealthcareTeamRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  AdminNotificationsRoute: typeof AdminNotificationsRoute
+  AdminServiceRequestsRoute: typeof AdminServiceRequestsRoute
+  AdminIndexRoute: typeof AdminIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -85,11 +280,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/healthcare-team': {
       id: '/healthcare-team'
       path: '/healthcare-team'
       fullPath: '/healthcare-team'
       preLoaderRoute: typeof HealthcareTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home-icu': {
+      id: '/home-icu'
+      path: '/home-icu'
+      fullPath: '/home-icu'
+      preLoaderRoute: typeof HomeIcuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/join-team': {
+      id: '/join-team'
+      path: '/join-team'
+      fullPath: '/join-team'
+      preLoaderRoute: typeof JoinTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medical-disclaimer': {
+      id: '/medical-disclaimer'
+      path: '/medical-disclaimer'
+      fullPath: '/medical-disclaimer'
+      preLoaderRoute: typeof MedicalDisclaimerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/request-service': {
+      id: '/request-service'
+      path: '/request-service'
+      fullPath: '/request-service'
+      preLoaderRoute: typeof RequestServiceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -99,14 +336,84 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/contact-messages': {
+      id: '/admin/contact-messages'
+      path: '/admin/contact-messages'
+      fullPath: '/admin/contact-messages'
+      preLoaderRoute: typeof AdminContactMessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/equipment': {
+      id: '/admin/equipment'
+      path: '/admin/equipment'
+      fullPath: '/admin/equipment'
+      preLoaderRoute: typeof AdminEquipmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/healthcare-team': {
+      id: '/admin/healthcare-team'
+      path: '/admin/healthcare-team'
+      fullPath: '/admin/healthcare-team'
+      preLoaderRoute: typeof AdminHealthcareTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/notifications': {
+      id: '/admin/notifications'
+      path: '/admin/notifications'
+      fullPath: '/admin/notifications'
+      preLoaderRoute: typeof AdminNotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/service-requests': {
+      id: '/admin/service-requests'
+      path: '/admin/service-requests'
+      fullPath: '/admin/service-requests'
+      preLoaderRoute: typeof AdminServiceRequestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
   HealthcareTeamRoute: HealthcareTeamRoute,
+  HomeIcuRoute: HomeIcuRoute,
+  JoinTeamRoute: JoinTeamRoute,
+  MedicalDisclaimerRoute: MedicalDisclaimerRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  RequestServiceRoute: RequestServiceRoute,
   ServicesRoute: ServicesRoute,
+  TermsRoute: TermsRoute,
+  AdminContactMessagesRoute: AdminContactMessagesRoute,
+  AdminEquipmentRoute: AdminEquipmentRoute,
+  AdminHealthcareTeamRoute: AdminHealthcareTeamRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  AdminNotificationsRoute: AdminNotificationsRoute,
+  AdminServiceRequestsRoute: AdminServiceRequestsRoute,
+  AdminIndexRoute: AdminIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

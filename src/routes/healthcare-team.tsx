@@ -16,7 +16,10 @@ import { CTASection } from "../components/site/CTASection";
 export const Route = createFileRoute("/healthcare-team")({
   head: () => ({
     meta: [
-      { title: "Join Our Healthcare Team — Doctors, Nurses, Physiotherapists | P. R. India Health Services" },
+      {
+        title:
+          "Join Our Healthcare Team — Doctors, Nurses, Physiotherapists | P. R. India Health Services",
+      },
       {
         name: "description",
         content:
@@ -72,8 +75,8 @@ function HealthcareTeamPage() {
     <>
       <PageHero eyebrow="Healthcare Professionals" title="Join Our Healthcare Team">
         <p>
-          We work with qualified healthcare professionals to support patients requiring care at home.
-          Register your professional interest and become part of a coordinated home healthcare
+          We work with qualified healthcare professionals to support patients requiring care at
+          home. Register your professional interest and become part of a coordinated home healthcare
           network.
         </p>
       </PageHero>
@@ -86,7 +89,9 @@ function HealthcareTeamPage() {
                 <role.icon className="h-5 w-5" aria-hidden="true" />
               </span>
               <h2 className="mt-4 font-display text-lg font-bold text-foreground">{role.title}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{role.description}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {role.description}
+              </p>
             </div>
           ))}
           <div className="card-soft flex flex-col justify-between bg-primary p-6 text-primary-foreground">
@@ -127,7 +132,10 @@ function HealthcareTeamPage() {
             </p>
             <ul className="mt-6 space-y-3">
               {opportunities.map((item) => (
-                <li key={item} className="flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-3">
+                <li
+                  key={item}
+                  className="flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-3"
+                >
                   <CalendarClock className="h-5 w-5 shrink-0 text-teal" aria-hidden="true" />
                   <span className="text-sm font-medium text-foreground">{item}</span>
                 </li>

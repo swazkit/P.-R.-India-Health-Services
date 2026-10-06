@@ -30,8 +30,8 @@ export function Footer() {
               <span className="font-display text-base font-bold">P. R. India Health Services</span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-navy-foreground/75">
-              Professional Critical Care Services at Home. Coordinated home healthcare, critical-care
-              equipment and trained healthcare professionals around your needs.
+              Professional Critical Care Services at Home. Coordinated home healthcare,
+              critical-care equipment and trained healthcare professionals around your needs.
             </p>
           </div>
 
@@ -98,10 +98,11 @@ export function Footer() {
 
         <div className="mt-12 border-t border-navy-foreground/15 pt-6">
           <p className="text-xs leading-relaxed text-navy-foreground/60">
-            Submission of a service request does not constitute medical advice, diagnosis or treatment,
-            and does not guarantee service availability. Healthcare services and equipment are subject to
-            professional assessment, suitability and availability. For medical emergencies, contact your
-            local emergency medical service or visit the nearest emergency department.
+            Submission of a service request does not constitute medical advice, diagnosis or
+            treatment, and does not guarantee service availability. Healthcare services and
+            equipment are subject to professional assessment, suitability and availability. For
+            medical emergencies, contact your local emergency medical service or visit the nearest
+            emergency department.
           </p>
           <p className="mt-4 text-xs text-navy-foreground/60">
             © {new Date().getFullYear()} P. R. India Health Services. All rights reserved.

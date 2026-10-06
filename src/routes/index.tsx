@@ -28,7 +28,10 @@ export const Route = createFileRoute("/")({
         content:
           "Coordinated home healthcare services in India: home ICU setup, home nursing services, doctor home visits, physiotherapy and critical care equipment — care coordinated around your needs.",
       },
-      { property: "og:title", content: "P. R. India Health Services — Professional Critical Care Services at Home" },
+      {
+        property: "og:title",
+        content: "P. R. India Health Services — Professional Critical Care Services at Home",
+      },
       {
         property: "og:description",
         content:
@@ -254,8 +257,8 @@ function Index() {
               Comprehensive Home Healthcare Support
             </h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              Healthcare services and critical-care support designed around the needs of patients and
-              families.
+              Healthcare services and critical-care support designed around the needs of patients
+              and families.
             </p>
           </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -313,7 +316,10 @@ function Index() {
                 <ul className="mt-3 grid gap-x-6 gap-y-1.5 text-sm text-muted-foreground sm:grid-cols-2">
                   {category.items.map((item) => (
                     <li key={item} className="flex items-start gap-2">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal" aria-hidden="true" />
+                      <span
+                        className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal"
+                        aria-hidden="true"
+                      />
                       {item}
                     </li>
                   ))}
@@ -436,9 +442,10 @@ function Index() {
               Healthcare Support With a Human Approach
             </h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              P. R. India Health Services focuses on connecting patients and families with appropriate
-              home healthcare support, qualified professionals and medical equipment — coordinated
-              with professionalism, responsiveness and a genuinely human approach to care.
+              P. R. India Health Services focuses on connecting patients and families with
+              appropriate home healthcare support, qualified professionals and medical equipment —
+              coordinated with professionalism, responsiveness and a genuinely human approach to
+              care.
             </p>
             <Link
               to="/about"

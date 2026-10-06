@@ -51,8 +51,8 @@ function AboutPage() {
     <>
       <PageHero eyebrow="About Us" title="About P. R. India Health Services">
         <p>
-          P. R. India Health Services provides coordinated home healthcare and critical-care support —
-          connecting patients and families with appropriate home healthcare services, qualified
+          P. R. India Health Services provides coordinated home healthcare and critical-care support
+          — connecting patients and families with appropriate home healthcare services, qualified
           professionals and medical equipment.
         </p>
       </PageHero>
@@ -94,7 +94,9 @@ function AboutPage() {
                 <span className="grid h-11 w-11 place-items-center rounded-lg bg-secondary text-primary">
                   <pillar.icon className="h-5 w-5" aria-hidden="true" />
                 </span>
-                <h2 className="mt-4 font-display text-lg font-bold text-foreground">{pillar.title}</h2>
+                <h2 className="mt-4 font-display text-lg font-bold text-foreground">
+                  {pillar.title}
+                </h2>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {pillar.description}
                 </p>

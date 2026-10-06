@@ -87,7 +87,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "P. R. India Health Services provides coordinated home healthcare services, home ICU setup, home nursing, doctor home visits and critical care equipment.",
       },
       { name: "author", content: "P. R. India Health Services" },
-      { property: "og:title", content: "P. R. India Health Services — Professional Critical Care Services at Home" },
+      {
+        property: "og:title",
+        content: "P. R. India Health Services — Professional Critical Care Services at Home",
+      },
       {
         property: "og:description",
         content:

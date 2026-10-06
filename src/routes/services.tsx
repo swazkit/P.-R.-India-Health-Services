@@ -17,7 +17,10 @@ import { CTASection } from "../components/site/CTASection";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Home Healthcare Services — Home ICU, Nursing, Doctor Visits | P. R. India Health Services" },
+      {
+        title:
+          "Home Healthcare Services — Home ICU, Nursing, Doctor Visits | P. R. India Health Services",
+      },
       {
         name: "description",
         content:
@@ -108,7 +111,10 @@ const equipmentCategories = [
 function ServicesPage() {
   return (
     <>
-      <PageHero eyebrow="Our Services" title="Healthcare Services at Home, Coordinated Around Your Needs">
+      <PageHero
+        eyebrow="Our Services"
+        title="Healthcare Services at Home, Coordinated Around Your Needs"
+      >
         <p>
           Healthcare services and critical-care support designed around the needs of patients and
           families — from home nursing services to complete home ICU setup.
@@ -122,7 +128,9 @@ function ServicesPage() {
               <span className="grid h-11 w-11 place-items-center rounded-lg bg-secondary text-primary">
                 <service.icon className="h-5 w-5" aria-hidden="true" />
               </span>
-              <h2 className="mt-4 font-display text-lg font-bold text-foreground">{service.title}</h2>
+              <h2 className="mt-4 font-display text-lg font-bold text-foreground">
+                {service.title}
+              </h2>
               <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                 {service.description}
               </p>
@@ -147,7 +155,8 @@ function ServicesPage() {
               </h2>
               <p className="mt-4 leading-relaxed text-muted-foreground">
                 When home-based critical-care support is required, we help coordinate essential
-                equipment and professional services based on individual requirements and availability.
+                equipment and professional services based on individual requirements and
+                availability.
               </p>
               <img
                 src={homeIcuImage}
@@ -168,7 +177,10 @@ function ServicesPage() {
                   <ul className="mt-3 grid gap-x-6 gap-y-1.5 text-sm text-muted-foreground sm:grid-cols-2">
                     {category.items.map((item) => (
                       <li key={item} className="flex items-start gap-2">
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal" aria-hidden="true" />
+                        <span
+                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal"
+                          aria-hidden="true"
+                        />
                         {item}
                       </li>
                     ))}
