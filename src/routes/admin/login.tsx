@@ -103,7 +103,12 @@ function AdminLoginPage() {
       setIsSubmitting(false);
       navigate({ to: "/admin" });
     } catch (err) {
-      console.error("Login exception:", err);
+      console.error(
+        "Login exception:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       setErrorMessage("An unexpected error occurred during login. Please try again.");
       setIsSubmitting(false);
     }

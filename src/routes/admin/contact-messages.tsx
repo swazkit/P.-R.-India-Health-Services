@@ -78,7 +78,12 @@ function AdminContactMessagesPage() {
       setMessages(data || []);
       setFilteredMessages(data || []);
     } catch (err) {
-      console.error("Error loading contact messages:", err);
+      console.error(
+        "Error loading contact messages:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       setError("Failed to fetch contact messages. Please check your admin permissions.");
     } finally {
       setIsLoading(false);
@@ -165,7 +170,12 @@ function AdminContactMessagesPage() {
       // Auto-clear success feedback after 3 seconds
       setTimeout(() => setUpdateSuccess(false), 3000);
     } catch (err) {
-      console.error("Error updating contact message status:", err);
+      console.error(
+        "Error updating contact message status:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       setUpdateError("Status update failed. Please try again.");
     } finally {
       setUpdatingStatus(false);

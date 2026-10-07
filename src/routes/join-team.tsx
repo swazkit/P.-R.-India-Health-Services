@@ -295,7 +295,7 @@ function JoinTeamPage() {
         });
 
         if (error) {
-          console.error("Supabase insert error:", error);
+          console.error("Supabase insert error:", error.message || "Unknown error");
           setSubmitError(
             "We couldn't submit your registration right now. Please try again or contact our team directly.",
           );
@@ -309,7 +309,12 @@ function JoinTeamPage() {
       setIsSubmitted(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (err) {
-      console.error("Registration exception:", err);
+      console.error(
+        "Registration exception:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       setSubmitError(
         "We couldn't submit your registration right now. Please try again or contact our team directly.",
       );

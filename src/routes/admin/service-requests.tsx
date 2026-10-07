@@ -218,7 +218,12 @@ function AdminServiceRequestsPage() {
       setRequests(data || []);
       setFilteredRequests(data || []);
     } catch (err) {
-      console.error("Error loading service requests:", err);
+      console.error(
+        "Error loading service requests:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       setError("Failed to fetch service requests. Please check permissions.");
     } finally {
       setIsLoading(false);
@@ -333,7 +338,12 @@ function AdminServiceRequestsPage() {
       setAssignedProfessionals(profs);
       setAssignedEquipment(equips);
     } catch (err) {
-      console.error("Error fetching assignments:", err);
+      console.error(
+        "Error fetching assignments:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
     } finally {
       setLoadingAssignments(false);
     }
@@ -355,7 +365,12 @@ function AdminServiceRequestsPage() {
 
       setActivities((data as unknown as ServiceRequestActivity[]) || []);
     } catch (err) {
-      console.error("Error loading activity timeline:", err);
+      console.error(
+        "Error loading activity timeline:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
     } finally {
       setLoadingActivities(false);
     }
@@ -508,10 +523,22 @@ function AdminServiceRequestsPage() {
               serviceRequired: selectedRequest.service_required,
             },
           },
-        ).catch((err) => console.error("Notification queuing error on status update:", err));
+        ).catch((err) =>
+          console.error(
+            "Notification queuing error on status update:",
+            err instanceof Error
+              ? err.message
+              : (err as { message?: string })?.message || "Unknown error",
+          ),
+        );
       }
     } catch (err) {
-      console.error("Error updating service request status:", err);
+      console.error(
+        "Error updating service request status:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       setUpdateError("Unable to update the status. Please try again.");
     } finally {
       setUpdatingStatus(false);
@@ -569,7 +596,12 @@ function AdminServiceRequestsPage() {
         setSelectedProfId(available[0].id);
       }
     } catch (err) {
-      console.error("Error fetching eligible professionals:", err);
+      console.error(
+        "Error fetching eligible professionals:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       setProfAssignError("Failed to load verified healthcare professionals.");
     } finally {
       setLoadingEligibleProfs(false);
@@ -620,10 +652,22 @@ function AdminServiceRequestsPage() {
               profession: assignedProf.profession,
             },
           },
-        ).catch((err) => console.error("Notification queuing error on prof assign:", err));
+        ).catch((err) =>
+          console.error(
+            "Notification queuing error on prof assign:",
+            err instanceof Error
+              ? err.message
+              : (err as { message?: string })?.message || "Unknown error",
+          ),
+        );
       }
     } catch (err: unknown) {
-      console.error("Error assigning professional:", err);
+      console.error(
+        "Error assigning professional:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       const msg =
         err instanceof Error ? err.message : "Unable to assign professional. Please try again.";
       setProfAssignError(msg);
@@ -667,7 +711,12 @@ function AdminServiceRequestsPage() {
         setSelectedAssetId(assetsList[0].id);
       }
     } catch (err) {
-      console.error("Error fetching available equipment:", err);
+      console.error(
+        "Error fetching available equipment:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       setEquipAssignError("Failed to load available equipment assets.");
     } finally {
       setLoadingEligibleEquip(false);
@@ -699,7 +748,12 @@ function AdminServiceRequestsPage() {
       fetchActiveAssignments(selectedRequest.id);
       fetchActivities(selectedRequest.id);
     } catch (err: unknown) {
-      console.error("Error assigning equipment:", err);
+      console.error(
+        "Error assigning equipment:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       const msg =
         err instanceof Error ? err.message : "Unable to assign equipment. Please try again.";
       setEquipAssignError(msg);
@@ -757,10 +811,22 @@ function AdminServiceRequestsPage() {
               referenceId: selectedRequest.reference_id,
             },
           },
-        ).catch((err) => console.error("Notification queuing error on prof release:", err));
+        ).catch((err) =>
+          console.error(
+            "Notification queuing error on prof release:",
+            err instanceof Error
+              ? err.message
+              : (err as { message?: string })?.message || "Unknown error",
+          ),
+        );
       }
     } catch (err: unknown) {
-      console.error("Error releasing assignment:", err);
+      console.error(
+        "Error releasing assignment:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       const msg = err instanceof Error ? err.message : "Failed to release assignment.";
       setAssignmentFeedback({
         type: "error",

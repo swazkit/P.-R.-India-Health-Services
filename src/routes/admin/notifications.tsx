@@ -190,7 +190,12 @@ function AdminNotificationsPage() {
       setNotifications((data as NotificationRecord[]) || []);
       setFilteredNotifications((data as NotificationRecord[]) || []);
     } catch (err) {
-      console.error("Error loading notifications:", err);
+      console.error(
+        "Error loading notifications:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       setError("Failed to fetch notification history. Please check admin permissions.");
     } finally {
       setIsLoading(false);
@@ -202,7 +207,12 @@ function AdminNotificationsPage() {
       const prefs = await NotificationService.getPreferences();
       setPreferences(prefs);
     } catch (err) {
-      console.error("Error fetching notification preferences:", err);
+      console.error(
+        "Error fetching notification preferences:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
     }
   };
 

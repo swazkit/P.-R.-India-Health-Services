@@ -33,13 +33,18 @@ export function useAdminAuth(requireAuth = true): AdminAuthState {
         .maybeSingle();
 
       if (roleError) {
-        console.error("Error verifying admin authorization:", roleError);
+        console.error("Error verifying admin authorization:", roleError.message || "Unknown error");
         return false;
       }
 
       return Boolean(data && data.role === "admin");
     } catch (err) {
-      console.error("Authorization check exception:", err);
+      console.error(
+        "Authorization check exception:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       return false;
     }
   };
@@ -80,6 +85,7 @@ export function useAdminAuth(requireAuth = true): AdminAuthState {
 
           if (requireAuth && !authorized) {
             setError("Access restricted: You do not have administrator privileges.");
+            navigate({ to: "/admin/login" });
           }
         } else {
           if (isMounted) {
@@ -91,7 +97,12 @@ export function useAdminAuth(requireAuth = true): AdminAuthState {
           }
         }
       } catch (err) {
-        console.error("Auth init exception:", err);
+        console.error(
+          "Auth init exception:",
+          err instanceof Error
+            ? err.message
+            : (err as { message?: string })?.message || "Unknown error",
+        );
         if (isMounted) {
           setIsLoading(false);
           setError("Failed to initialize authentication.");
@@ -117,6 +128,7 @@ export function useAdminAuth(requireAuth = true): AdminAuthState {
         }
         if (requireAuth && !authorized) {
           setError("Access restricted: You do not have administrator privileges.");
+          navigate({ to: "/admin/login" });
         }
       } else {
         if (isMounted) {
@@ -139,7 +151,12 @@ export function useAdminAuth(requireAuth = true): AdminAuthState {
     try {
       await supabase.auth.signOut();
     } catch (err) {
-      console.error("Sign out error:", err);
+      console.error(
+        "Sign out error:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
     }
     navigate({ to: "/admin/login" });
   };

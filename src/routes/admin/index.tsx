@@ -123,7 +123,12 @@ function AdminDashboardPage() {
 
       setRecentRequests((recents as RecentRequest[]) || []);
     } catch (err) {
-      console.error("Error fetching admin dashboard statistics:", err);
+      console.error(
+        "Error fetching admin dashboard statistics:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       setError("Unable to load live dashboard statistics. Please ensure you are authorized.");
     } finally {
       setIsLoading(false);

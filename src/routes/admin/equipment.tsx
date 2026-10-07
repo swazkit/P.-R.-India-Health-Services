@@ -129,7 +129,12 @@ function AdminEquipmentPage() {
       setTypes(typesRes.data || []);
       setAssets(assetsRes.data || []);
     } catch (err) {
-      console.error("Error loading equipment data:", err);
+      console.error(
+        "Error loading equipment data:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       setError("Failed to fetch equipment records. Please check permissions.");
     } finally {
       setIsLoading(false);
@@ -357,7 +362,12 @@ function AdminEquipmentPage() {
         setIsCreateAssetOpen(false);
       }
     } catch (err: unknown) {
-      console.error("Error saving asset:", err);
+      console.error(
+        "Error saving asset:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       const message =
         err instanceof Error ? err.message : "Failed to save asset. Please try again.";
       setAssetFormError(message);
@@ -415,7 +425,12 @@ function AdminEquipmentPage() {
         prev.map((item) => (item.id === t.id ? { ...item, active: nextState } : item)),
       );
     } catch (err) {
-      console.error("Error toggling active state:", err);
+      console.error(
+        "Error toggling active state:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       setError("Unable to update equipment status. Please try again.");
     }
   };
@@ -492,7 +507,12 @@ function AdminEquipmentPage() {
         setIsCreateTypeOpen(false);
       }
     } catch (err: unknown) {
-      console.error("Error saving equipment type:", err);
+      console.error(
+        "Error saving equipment type:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       const message =
         err instanceof Error ? err.message : "Failed to save equipment type. Please try again.";
       setTypeFormError(message);

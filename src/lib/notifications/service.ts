@@ -211,7 +211,7 @@ export class NotificationService {
           .maybeSingle();
 
         if (checkError) {
-          console.error("Failed idempotency check query:", checkError);
+          console.error("Failed idempotency check query:", checkError.message || "Unknown error");
         } else if (existing) {
           // Idempotent duplicate detected, return existing record safely
           return {
@@ -531,7 +531,10 @@ export class NotificationService {
       .limit(batchLimit);
 
     if (error || !candidates) {
-      console.error("Error querying dispatch queue:", error);
+      console.error(
+        "Error querying dispatch queue:",
+        error ? error.message : "No candidate data returned",
+      );
       return { processed: 0, sent: 0, delivered: 0, failed: 0 };
     }
 

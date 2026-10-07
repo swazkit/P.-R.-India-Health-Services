@@ -85,7 +85,12 @@ function AdminHealthcareTeamPage() {
       setCandidates(data || []);
       setFilteredCandidates(data || []);
     } catch (err) {
-      console.error("Error fetching candidate registrations:", err);
+      console.error(
+        "Error fetching candidate registrations:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       setError("Failed to load healthcare candidate profiles.");
     } finally {
       setIsLoading(false);
@@ -178,7 +183,12 @@ function AdminHealthcareTeamPage() {
 
       setTimeout(() => setUpdateSuccess(false), 3000);
     } catch (err) {
-      console.error("Error updating candidate verification status:", err);
+      console.error(
+        "Error updating candidate verification status:",
+        err instanceof Error
+          ? err.message
+          : (err as { message?: string })?.message || "Unknown error",
+      );
       setUpdateError("Unable to update the status. Please try again.");
     } finally {
       setUpdatingStatus(false);
