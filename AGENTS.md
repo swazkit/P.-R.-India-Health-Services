@@ -1,12 +1,17 @@
-<!-- LOVABLE:BEGIN -->
+# P. R. India Health Services — Repository Guidelines
 
-> [!IMPORTANT]
-> This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
-> published git history — force pushing, or rebasing/amending/squashing commits
-> that are already pushed — as it rewrites history on Lovable's side and the
-> user will likely lose their project history.
->
-> Commits you push to the connected branch sync back to Lovable and show up in
-> the editor, so keep the branch in a working state.
+> Operational guidelines and core conventions for developers and AI coding agents.
 
-<!-- LOVABLE:END -->
+## Core Rules
+
+1. **Database & Migrations:** Never modify existing SQL migrations directly. Always append a new sequential migration in `supabase/migrations/`.
+2. **Database Security:**
+   - Preserve Row Level Security (RLS) on all application tables.
+   - Enforce `public.is_admin()` on admin routes and tables.
+   - Use `SECURITY DEFINER` with `SET search_path = public` on all database RPC functions.
+   - Retain `FOR UPDATE` row locks and unique partial indexes on assignment RPCs.
+3. **Client-Side Security:**
+   - Never expose `SUPABASE_SERVICE_ROLE_KEY` to frontend client code or `.env`.
+   - Always sanitize errors passed to `console.error` (never dump raw Supabase error objects or SQL queries).
+4. **Validation:**
+   - After any change, run `npm test`, `npx tsc --noEmit`, `npm run lint`, and `npm run build`.
