@@ -3,15 +3,26 @@ import {
   Activity,
   ArrowRight,
   BedDouble,
+  CheckCircle2,
+  ChevronRight,
   ClipboardList,
+  Clock,
   HandHeart,
   HeartPulse,
   Home,
+  Phone,
+  PhoneCall,
+  Shield,
+  ShieldCheck,
+  Sparkles,
+  Star,
   Stethoscope,
   UserRound,
   UsersRound,
   Wind,
+  Zap,
 } from "lucide-react";
+import { useState } from "react";
 
 import heroImage from "../assets/hero-home-care.jpg";
 import homeIcuImage from "../assets/home-icu.jpg";
@@ -41,6 +52,89 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
+
+const heroServices = [
+  {
+    id: "home-icu",
+    label: "Home ICU Setup",
+    icon: BedDouble,
+    badge: "Most Requested",
+    highlight: "Complete Hospital-Grade ICU Setup at Home",
+    description:
+      "Motorized 5-function ICU bed, multipara cardiac monitor, ventilator/BiPAP, suction apparatus, syringe pumps & dedicated ICU nurse.",
+    eta: "Rapid 2–4 Hours Setup",
+    points: [
+      "Motorized ICU Bed & Anti-Bedsore Mattress",
+      "Ventilator / BiPAP & Oxygen Support",
+      "24/7 Certified ICU Critical Care Nurse",
+    ],
+    serviceValue: "Home ICU Setup",
+  },
+  {
+    id: "nursing",
+    label: "24/7 Nursing Care",
+    icon: HeartPulse,
+    badge: "12h / 24h Shifts",
+    highlight: "Certified Critical-Care & Post-Surgical Nurses",
+    description:
+      "Skilled bedside care for tracheostomy, catheter management, IV infusions, wound dressing, and continuous vital signs charting.",
+    eta: "Same-Day Deployment",
+    points: [
+      "IV Cannulation & Medication Infusion",
+      "Tracheostomy & Ryle's Tube Care",
+      "Post-Operative & Elderly Bedside Care",
+    ],
+    serviceValue: "Nursing Services",
+  },
+  {
+    id: "equipment",
+    label: "Medical Equipment",
+    icon: Wind,
+    badge: "Rent / Purchase",
+    highlight: "Calibrated & Sanitized Critical-Care Equipment",
+    description:
+      "Oxygen concentrators (5L/10L), BiPAP/CPAP machines, cardiac monitors, DVT pumps, suction machines delivered with free home installation.",
+    eta: "Immediate Dispatch Available",
+    points: [
+      "Hospital-Grade Sterilization Protocol",
+      "Doorstep Delivery & Biomedical Calibration",
+      "24/7 Technical On-Call Support",
+    ],
+    serviceValue: "Medical Equipment",
+  },
+  {
+    id: "doctor",
+    label: "Doctor Home Visit",
+    icon: Stethoscope,
+    badge: "Physician Review",
+    highlight: "Comprehensive Clinical Consultation at Home",
+    description:
+      "Experienced MBBS/MD physicians conduct in-depth clinical evaluations, treatment adjustments, ECG reviews, and eldercare visits.",
+    eta: "Scheduled within 24h",
+    points: [
+      "Detailed Physical Examination & Diagnosis",
+      "Treatment & Prescription Adjustments",
+      "Diagnostic Lab Test Coordination",
+    ],
+    serviceValue: "Doctor Visits",
+  },
+  {
+    id: "physio",
+    label: "Physiotherapy",
+    icon: Activity,
+    badge: "Rehabilitation",
+    highlight: "Neuro, Ortho & Cardiopulmonary Recovery",
+    description:
+      "Targeted rehabilitation therapy for stroke recovery, post-joint replacement mobility, chest physiotherapy, and chronic pain management.",
+    eta: "Daily / Alternate Sessions",
+    points: [
+      "Post-Surgery & Fracture Mobility",
+      "Neuro & Paralysis Rehabilitation",
+      "Chest Physiotherapy for ICU Patients",
+    ],
+    serviceValue: "Physiotherapy",
+  },
+];
 
 const services = [
   {
@@ -151,47 +245,328 @@ const whyCards = [
 ];
 
 function Index() {
+  const [activeServiceId, setActiveServiceId] = useState<string>("home-icu");
+  const currentService = heroServices.find((s) => s.id === activeServiceId) || heroServices[0]!;
+
   return (
     <>
-      {/* 1. Hero */}
-      <section className="bg-section">
-        <div className="container-site grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-2 lg:gap-14">
-          <div>
-            <p className="eyebrow">Home Critical Care Services</p>
-            <h1 className="mt-4 font-display text-4xl font-bold leading-[1.1] text-foreground sm:text-5xl">
-              Professional Critical Care Services at Home
-            </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Professional healthcare support, critical-care equipment and trained healthcare
-              professionals coordinated around your needs — bringing essential care closer to home.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
-                to="/request-service"
-                className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-soft transition-colors hover:bg-navy"
-              >
-                Request a Service
-              </Link>
-              <Link
-                to="/join-team"
-                className="inline-flex items-center justify-center rounded-lg border border-primary bg-card px-6 py-3 text-base font-semibold text-primary transition-colors hover:bg-secondary"
-              >
-                Join Our Healthcare Team
-              </Link>
+      {/* 1. Enhanced Interactive Hero */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-section via-section/80 to-background pt-10 pb-20 sm:pt-16 sm:pb-28">
+        {/* Layered Animated Background Orbs */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-32 left-1/2 -z-10 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-gradient-to-br from-teal/20 via-primary/12 to-transparent blur-3xl animate-hero-orb-drift"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute top-1/4 -right-32 -z-10 h-[400px] w-[400px] rounded-full bg-gradient-to-bl from-accent/35 via-teal/10 to-transparent blur-3xl animate-hero-orb-drift"
+          style={{ animationDelay: "7s" }}
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-20 -left-20 -z-10 h-[350px] w-[350px] rounded-full bg-gradient-to-tr from-primary/10 via-teal/8 to-transparent blur-3xl animate-hero-orb-drift"
+          style={{ animationDelay: "13s" }}
+        />
+
+        {/* Decorative Dot Grid Pattern */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, currentColor 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+          }}
+        />
+
+        <div className="container-site">
+          {/* Top Live Emergency Beacon Banner */}
+          <div className="animate-hero-fade-in-up hero-delay-1 mb-8 flex flex-wrap items-center justify-between gap-3 rounded-full border border-teal/20 bg-card/70 px-5 py-2.5 text-xs backdrop-blur-xl shadow-soft sm:px-6 sm:py-3">
+            <div className="flex items-center gap-2.5">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-teal animate-hero-pulse-ring" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal opacity-75" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-teal" />
+              </span>
+              <span className="font-semibold text-foreground">
+                24/7 Emergency ICU & Critical Care Coordination Active Across India
+              </span>
             </div>
-            <p className="mt-6 flex items-center gap-2 text-sm font-medium text-muted-foreground">
-              <HeartPulse className="h-4 w-4 shrink-0 text-teal" aria-hidden="true" />
-              Care coordinated around your needs.
-            </p>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-1 font-bold text-teal transition-all duration-200 hover:text-primary hover:gap-2"
+            >
+              <span>Instant Coordinator Hotline</span>
+              <ChevronRight className="h-3.5 w-3.5" />
+            </Link>
           </div>
-          <div className="relative">
-            <img
-              src={heroImage}
-              alt="A nurse providing home healthcare to an elderly patient at home"
-              width={1600}
-              height={1104}
-              className="aspect-[4/3] w-full rounded-2xl object-cover shadow-lift"
-            />
+
+          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
+            {/* Left Column: Heading, Interactive Explorer & CTAs */}
+            <div className="lg:col-span-7">
+              <div className="animate-hero-fade-in-up hero-delay-1 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-secondary/90 to-accent/60 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary shadow-xs backdrop-blur-sm">
+                <HeartPulse className="h-3.5 w-3.5 text-teal" />
+                <span>Hospital-Grade Home Critical Care</span>
+              </div>
+
+              <h1 className="animate-hero-fade-in-up hero-delay-2 mt-5 font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-5xl sm:leading-[1.12] lg:text-[3.4rem]">
+                Professional Critical Care &{" "}
+                <span className="bg-gradient-to-r from-primary via-teal to-primary bg-clip-text text-transparent animate-hero-gradient-shift">
+                  ICU Support at Home
+                </span>
+              </h1>
+
+              <p className="animate-hero-fade-in-up hero-delay-3 mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg sm:leading-relaxed">
+                Bringing hospital-grade medical ICU setups, 24/7 certified critical care nurses, and
+                specialized monitoring directly to your home — professionally coordinated around
+                your patient's needs.
+              </p>
+
+              {/* Interactive Service Selector Pills */}
+              <div className="animate-hero-fade-in-up hero-delay-4 mt-8">
+                <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                  Select a Care Requirement:
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2.5">
+                  {heroServices.map((item) => {
+                    const Icon = item.icon;
+                    const isActive = activeServiceId === item.id;
+                    return (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => setActiveServiceId(item.id)}
+                        className={`group relative inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-semibold transition-all duration-300 cursor-pointer ${
+                          isActive
+                            ? "bg-primary text-primary-foreground shadow-lift scale-[1.04] ring-2 ring-teal/50 ring-offset-2 ring-offset-background"
+                            : "border border-border/80 bg-card/80 text-foreground backdrop-blur-sm hover:bg-secondary hover:border-teal/30 hover:shadow-soft"
+                        }`}
+                      >
+                        <Icon
+                          className={`h-4 w-4 shrink-0 transition-all duration-300 ${
+                            isActive
+                              ? "text-teal-foreground"
+                              : "text-teal group-hover:text-primary group-hover:scale-110"
+                          }`}
+                        />
+                        <span>{item.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Dynamic Interactive Service Feature Panel */}
+              <div className="animate-hero-fade-in-up hero-delay-5 mt-5 rounded-2xl border border-border/60 bg-gradient-to-br from-card/95 to-card/80 p-5 shadow-soft backdrop-blur-md transition-all duration-500 relative overflow-hidden">
+                {/* Gradient accent line on left */}
+                <div aria-hidden="true" className="absolute left-0 top-3 bottom-3 w-[3px] rounded-full bg-gradient-to-b from-teal via-primary to-teal" />
+
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border/50 pb-3 pl-3">
+                  <div className="flex items-center gap-2.5">
+                    <span className="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-teal/20 to-primary/10 text-teal shadow-xs">
+                      <currentService.icon className="h-4 w-4" />
+                    </span>
+                    <h3 className="font-display text-sm font-bold text-foreground">
+                      {currentService.highlight}
+                    </h3>
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-accent to-secondary px-3 py-1 text-[11px] font-semibold text-accent-foreground shadow-xs">
+                    <Clock className="h-3 w-3 text-teal" />
+                    {currentService.eta}
+                  </span>
+                </div>
+
+                <p className="mt-3 pl-3 text-xs leading-relaxed text-muted-foreground">
+                  {currentService.description}
+                </p>
+
+                <div className="mt-3.5 grid gap-2.5 pl-3 sm:grid-cols-3">
+                  {currentService.points.map((pt) => (
+                    <div
+                      key={pt}
+                      className="flex items-start gap-2 text-xs text-foreground font-medium"
+                    >
+                      <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-teal mt-0.5" />
+                      <span className="leading-tight">{pt}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Primary Action Buttons */}
+              <div className="animate-hero-fade-in-up hero-delay-6 mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center">
+                <Link
+                  to="/request-service"
+                  className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-lift transition-all duration-300 hover:bg-navy hover:shadow-lift hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  {/* Shimmer overlay */}
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent animate-hero-shimmer"
+                  />
+                  <span className="relative">Request {currentService.label}</span>
+                  <ArrowRight className="relative h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+
+                <Link
+                  to="/join-team"
+                  className="group inline-flex items-center justify-center gap-2 rounded-xl border-2 border-primary/80 bg-card/80 px-7 py-3.5 text-base font-semibold text-primary shadow-xs backdrop-blur-sm transition-all duration-300 hover:bg-secondary hover:border-primary hover:shadow-soft"
+                >
+                  <UsersRound className="h-4 w-4 text-teal transition-transform duration-300 group-hover:scale-110" />
+                  <span>Join Healthcare Team</span>
+                </Link>
+              </div>
+
+              <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
+                <span className="flex items-center gap-1.5">
+                  <ShieldCheck className="h-4 w-4 text-teal" />
+                  No Upfront Registration Fee
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <Activity className="h-4 w-4 text-teal" />
+                  Immediate Dispatch Available
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <Phone className="h-4 w-4 text-teal" />
+                  Dedicated Case Coordinator
+                </span>
+              </div>
+            </div>
+
+            {/* Right Column: Hero Visual with Live Glassmorphic Overlay Badges */}
+            <div className="relative lg:col-span-5">
+              {/* Outer Decorative Gradient Frame */}
+              <div className="relative mx-auto max-w-md lg:max-w-none">
+                <div className="overflow-hidden rounded-3xl border-2 border-border/80 bg-card p-2 shadow-lift">
+                  <img
+                    src={heroImage}
+                    alt="A compassionate critical care nurse providing specialized home care to an elderly patient"
+                    width={1600}
+                    height={1104}
+                    className="aspect-[4/3] w-full rounded-2xl object-cover"
+                  />
+                </div>
+
+                {/* Floating Glass Card 1: Live ICU Telemetry Card (Top-Left) */}
+                <div className="absolute -top-5 -left-4 sm:-left-6 max-w-[220px] rounded-2xl border border-border/90 bg-card/95 p-3.5 shadow-lift backdrop-blur-md transition-transform duration-300 hover:scale-105">
+                  <div className="flex items-center justify-between gap-2 border-b border-border/60 pb-2">
+                    <span className="flex items-center gap-1.5 text-[11px] font-bold text-foreground">
+                      <span className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                      </span>
+                      Live ICU Monitoring
+                    </span>
+                    <span className="text-[10px] font-semibold text-teal">Active</span>
+                  </div>
+
+                  <div className="mt-2 grid grid-cols-2 gap-2 text-center">
+                    <div className="rounded-lg bg-secondary/80 p-1.5">
+                      <span className="block text-[10px] text-muted-foreground">SpO₂ Level</span>
+                      <span className="text-xs font-bold text-primary">99% Normal</span>
+                    </div>
+                    <div className="rounded-lg bg-secondary/80 p-1.5">
+                      <span className="block text-[10px] text-muted-foreground">Heart Rate</span>
+                      <span className="text-xs font-bold text-teal">74 BPM</span>
+                    </div>
+                  </div>
+
+                  {/* Animated Waveform SVG */}
+                  <div className="mt-2 flex items-center justify-center rounded bg-primary/5 py-1 px-2">
+                    <svg
+                      viewBox="0 0 100 16"
+                      className="h-4 w-full text-teal stroke-current"
+                      fill="none"
+                      strokeWidth="2"
+                    >
+                      <path
+                        d="M0 8h20l3-6 4 12 3-8 3 4 3-2h64"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Floating Glass Card 2: 100% Verified Staff Badge (Bottom-Right) */}
+                <div className="absolute -bottom-6 -right-4 sm:-right-6 max-w-[240px] rounded-2xl border border-border/90 bg-card/95 p-3.5 shadow-lift backdrop-blur-md transition-transform duration-300 hover:scale-105">
+                  <div className="flex items-center gap-2.5">
+                    <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-teal/15 text-teal">
+                      <ShieldCheck className="h-5 w-5" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-xs font-bold text-foreground">
+                        100% Verified Clinicians
+                      </p>
+                      <div className="mt-0.5 flex items-center gap-1">
+                        <div className="flex text-amber-500">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="h-3 w-3 fill-current" />
+                          ))}
+                        </div>
+                        <span className="text-[10px] font-semibold text-muted-foreground">
+                          4.9 (1.5k+ Care Days)
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="mt-2 text-[10px] text-muted-foreground leading-tight">
+                    Background-checked ICU nurses, doctors & certified physiotherapists.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 4 Interactive Trust Indicators Under Hero Grid */}
+          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="card-soft flex items-center gap-3.5 p-4.5 transition-all duration-200 hover:shadow-soft hover:border-teal/40">
+              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-secondary text-primary">
+                <BedDouble className="h-5 w-5" />
+              </div>
+              <div className="min-w-0">
+                <h4 className="text-xs font-bold text-foreground">Hospital-Grade Equipment</h4>
+                <p className="text-[11px] text-muted-foreground truncate">
+                  Sterilized ventilators, BiPAP & monitors
+                </p>
+              </div>
+            </div>
+
+            <div className="card-soft flex items-center gap-3.5 p-4.5 transition-all duration-200 hover:shadow-soft hover:border-teal/40">
+              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-secondary text-primary">
+                <ShieldCheck className="h-5 w-5" />
+              </div>
+              <div className="min-w-0">
+                <h4 className="text-xs font-bold text-foreground">Verified Healthcare Staff</h4>
+                <p className="text-[11px] text-muted-foreground truncate">
+                  License & background-verified clinicians
+                </p>
+              </div>
+            </div>
+
+            <div className="card-soft flex items-center gap-3.5 p-4.5 transition-all duration-200 hover:shadow-soft hover:border-teal/40">
+              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-secondary text-primary">
+                <Zap className="h-5 w-5" />
+              </div>
+              <div className="min-w-0">
+                <h4 className="text-xs font-bold text-foreground">Rapid Emergency Setup</h4>
+                <p className="text-[11px] text-muted-foreground truncate">
+                  Same-day home ICU deployment
+                </p>
+              </div>
+            </div>
+
+            <div className="card-soft flex items-center gap-3.5 p-4.5 transition-all duration-200 hover:shadow-soft hover:border-teal/40">
+              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-secondary text-primary">
+                <PhoneCall className="h-5 w-5" />
+              </div>
+              <div className="min-w-0">
+                <h4 className="text-xs font-bold text-foreground">24/7 Clinical Support</h4>
+                <p className="text-[11px] text-muted-foreground truncate">
+                  Dedicated case manager on call
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
